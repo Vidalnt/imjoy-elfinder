@@ -1093,7 +1093,7 @@ class Connector:
         try:
             img = self._img.open(cur_file)  # type: ignore
             img_resized = img.resize(
-                (width, height), self._img.ANTIALIAS  # type: ignore
+                (width, height), self._img.Resampling.LANCZOS  # type: ignore
             )
             img_resized.save(cur_file)
             self._rm_tmb(cur_file)
@@ -1796,7 +1796,7 @@ class Connector:
             box = _crop_tuple(img.size)
             if box:
                 img = img.crop(box)
-            img.thumbnail(size, self._img.ANTIALIAS)  # type: ignore
+            img.thumbnail(size, self._img.Resampling.LANCZOS)  # type: ignore
             img.save(tmb_path, "PNG")
         # UnidentifiedImageError requires Pillow 7.0.0
         except (OSError, ValueError) as exc:
