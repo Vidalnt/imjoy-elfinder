@@ -574,6 +574,10 @@ class Connector:
 
         if download:
             disp = "attachments"
+            filename = os.path.basename(cur_file)
+            self._http_header["Content-Disposition"] = (
+                f'attachment; filename="{filename}"'
+            )
         elif parts[0] == "image":
             disp = "image"
         else:
@@ -582,7 +586,8 @@ class Connector:
         self._http_status_code = 200
         self._http_header["Content-type"] = mime
         self._http_header["Content-Length"] = str(os.lstat(cur_file).st_size)
-        self._http_header["Content-Disposition"] = disp + ";"
+        if not download:
+            self._http_header["Content-Disposition"] = disp + ";"
         self._response["__send_file"] = cur_file
 
     def __rename(self) -> None:
