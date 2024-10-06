@@ -307,9 +307,9 @@
     })
     // set app icon
     const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-    link.type = 'image/x-icon';
-    link.rel = 'shortcut icon';
-    link.href = serverUrl + '/static/img/favicon.ico';
+    link.type = 'image/png';
+    link.rel = 'icon'; 
+    link.href = serverUrl + '/static/img/logo.png';
     document.getElementsByTagName('head')[0].appendChild(link);
 
 })()

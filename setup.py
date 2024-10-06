@@ -16,7 +16,7 @@ VERSION = json.loads(VERSION_FILE.read_text(encoding="utf-8"))["version"]
 
 REQUIRES = [
     "aiofiles",
-    "elfinder-client",
+    "elfinder-client @ https://github.com/Vidalnt/elFinder-1/releases/download/2.1.62a3/elfinder-client-2.1.62a3.tar.gz",
     "fastapi",
     "jinja2",
     "pathvalidate",
